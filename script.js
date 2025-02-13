@@ -40,4 +40,15 @@ const taskObj ={
    description: descriptionInput.value,
 };
 
-});
+if(dataArrIndex === -1){
+    taskData.unshift(taskObj);
+  }
+
+  taskData.forEach(({id, title, date, description}) => {
+      tasksContainer.innerHTML += `
+<div class="task" id="${id}">
+          </div>
+             `
+    }
+  );
+      });
