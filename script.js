@@ -27,13 +27,14 @@ openTaskFormBtn.addEventListener("click", () =>
 
   closeTaskFormBtn.addEventListener("click", () => {
     confirmCloseDialog.showModal();
+    const formInputsContainValues = titleInput.value||dateInput.value||descriptionInput.value;
   });
 
   cancelBtn.addEventListener("click",() => {confirmCloseDialog.close();});
 
   discardBtn.addEventListener("click", () => {
     confirmCloseDialog.close();
-    taskForm.classList.toggle("hidden");
+    reset();
   });
 
   taskForm.addEventListener("submit", (e) => {
@@ -66,6 +67,5 @@ if(dataArrIndex === -1){
 
   );
 
-     
-  taskForm.classList.toggle("hidden");
+  reset();
 });
