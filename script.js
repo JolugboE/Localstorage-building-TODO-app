@@ -26,10 +26,11 @@ const  addOrUpdateTask = () =>{
      taskData.unshift(taskObj);
     }else{
         taskData[dataArrIndex] = taskObj;
-   }  
+   } 
 
-   updateTaskContainer()
-reset()
+   localStorage.setItem("data", JSON.stringify(taskData));
+ updateTaskContainer()
+ reset()
   };
 
   const updateTaskContainer = () => {
@@ -99,7 +100,7 @@ openTaskFormBtn.addEventListener("click", () =>
       }
   });
 
-  cancelBtn.addEventListener("click",() => {confirmCloseDialog.close();});
+  cancelBtn.addEventListener("click",() => confirmCloseDialog.close());
 
   discardBtn.addEventListener("click", () => {
     confirmCloseDialog.close();
@@ -109,22 +110,5 @@ openTaskFormBtn.addEventListener("click", () =>
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    addOrUpdateTask()
+    addOrUpdateTask();
 });
-
-const myTaskArr = [
-    { task: "Walk the Dog", date: "22-04-2022" },
-    { task: "Read some books", date: "02-11-2023" },
-    { task: "Watch football", date: "10-08-2021" },
-  ];
-
-  localStorage.setItem("data", JSON.stringify(myTaskArr));
-
-  localStorage.removeItem("data");
-  localStorage.clear("data");
-
-  const getTaskArr = localStorage.getItem("data")
-console.log(getTaskArr)
-
-const getTaskArrObj = JSON.parse(localStorage.getItem("data"));
-console.log(getTaskArrObj);
