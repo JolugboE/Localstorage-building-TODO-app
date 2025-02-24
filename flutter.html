@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Source Code Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400&display=swap" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #1E1E2C;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #2D2D44;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #E94560;
+        }
+        .hero {
+            padding: 50px 20px;
+        }
+        .btn {
+            background-color: #E94560;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #ff5c7a;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .features, .pricing, .contact {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="WhatsApp Image 2025-02-18 at 11.37.44_9b2f3254.jpg" alt="Your Logo" width="150">
+    </header>
+    
+    <section class="hero">
+        <h1>Premium Flutter Source Code</h1>
+        <p>Unlock high-quality, customizable Flutter templates to supercharge your app development.</p>
+        <div id="paypal-button-container"></div>
+    </section>
+    
+    <div class="container">
+        <section class="features">
+            <h2>Why Choose Our Code?</h2>
+            <p>✔ Well-structured & optimized code<br>✔ Easy to customize<br>✔ Regular updates & support</p>
+        </section>
+        
+        <section class="pricing">
+            <h2>Pricing Plans</h2>
+            <p>Starting from just <strong>$50</strong> per template</p>
+        </section>
+        
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>Email: support@yourstore.com</p>
+        </section>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '50.00' 
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
